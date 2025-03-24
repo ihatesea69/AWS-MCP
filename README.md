@@ -128,3 +128,4 @@ Nếu bạn sử dụng Node.js thông qua `nvm`, hãy biên dịch từ mã ngu
 ## Kết luận
 AWS MCP là một công cụ mạnh mẽ cho phép bạn quản lý tài nguyên AWS bằng cách sử dụng trợ lý AI Claude. Với khả năng truy vấn và điều khiển thông qua ngôn ngữ tự nhiên, AWS MCP giúp đơn giản hóa việc quản lý AWS một cách đáng kể. Nếu bạn đang tìm kiếm một giải pháp thay thế cho Amazon Q, AWS MCP là một lựa chọn đáng cân nhắc!
 
+Nguon - Credit : https://github.com/RafalWilinski/aws-mcp

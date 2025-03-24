@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "aws": {
+      "command": "C:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "G:/Desktop/MCP AWS/aws-mcp/node_modules/tsx/dist/cli.mjs",
+        "G:/Desktop/MCP AWS/aws-mcp/index.ts"
+      ]
+    }
+  }
+}
