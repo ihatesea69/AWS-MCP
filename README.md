@@ -1,19 +1,26 @@
 # AWS MCP: Model Context Protocol trên AWS
 
+![AWS Logo](https://www.telecomreview.com/images/stories/2023/09/Amazon_and_Anthropic.jpg)
 ## Giới thiệu về Model Context Protocol (MCP)
 ### Bắt đầu với MCP
 
 MCP (Model Context Protocol) là một giao thức mở chuẩn hóa cách các ứng dụng cung cấp ngữ cảnh cho các mô hình ngôn ngữ lớn (LLMs). Hãy tưởng tượng MCP giống như một cổng USB-C cho các ứng dụng AI. Cũng như USB-C cung cấp một phương thức chuẩn để kết nối thiết bị với các phụ kiện khác nhau, MCP cung cấp một phương thức chuẩn để kết nối mô hình AI với các nguồn dữ liệu và công cụ khác nhau.
 
 ### Tại sao nên sử dụng MCP?
-MCP giúp bạn xây dựng các agent và quy trình tự động phức tạp dựa trên LLMs. Các mô hình LLM thường cần tích hợp với dữ liệu và công cụ, và MCP cung cấp:
+MCP giúp xây dựng các agent và quy trình tự động phức tạp dựa trên LLMs. Các mô hình LLM thường cần tích hợp với dữ liệu và công cụ, và MCP cung cấp:
 - **Danh sách ngày càng tăng các tích hợp sẵn có** giúp LLM của bạn kết nối trực tiếp.
 - **Khả năng linh hoạt** để chuyển đổi giữa các nhà cung cấp LLM.
 - **Các phương pháp bảo mật dữ liệu tốt nhất** trong hạ tầng của bạn.
 
+
+
+
+
 ### Kiến trúc tổng quát
 Ở mức cơ bản, MCP tuân theo kiến trúc client-server, nơi một ứng dụng chủ có thể kết nối với nhiều máy chủ khác nhau:
 
+
+![AWS Logo](https://quickstartgenai.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Ft2bsu7sk%2Fproduction%2Fd0d1f7922931519f74e92737ae860809d8a45784-563x384.png&w=1920&q=75)
 
 
 - **MCP Hosts**: Các chương trình như Claude Desktop, IDEs hoặc công cụ AI muốn truy cập dữ liệu thông qua MCP.
@@ -30,17 +37,17 @@ AWS MCP (Model Context Protocol) là một máy chủ cho phép các trợ lý A
 AWS MCP có thể được coi là một giải pháp thay thế mạnh mẽ cho Amazon Q, mang lại sự linh hoạt và bảo mật cao hơn.
 
 ## Tính năng chính của AWS MCP
-- 🔍 **Truy vấn và chỉnh sửa tài nguyên AWS bằng ngôn ngữ tự nhiên**
-- ☁️ **Hỗ trợ nhiều hồ sơ AWS và xác thực SSO**
-- 🌐 **Hỗ trợ đa vùng AWS**
-- 🔐 **Quản lý thông tin xác thực an toàn** (Không tiết lộ thông tin xác thực ra bên ngoài, chỉ sử dụng thông tin cục bộ)
-- 🏃‍♂️ **Thực thi cục bộ với thông tin đăng nhập AWS của bạn**
+-  **Truy vấn và chỉnh sửa tài nguyên AWS bằng ngôn ngữ tự nhiên**
+-  **Hỗ trợ nhiều hồ sơ AWS và xác thực SSO**
+- **Hỗ trợ đa vùng AWS**
+- **Quản lý thông tin xác thực an toàn** (Không tiết lộ thông tin xác thực ra bên ngoài, chỉ sử dụng thông tin cục bộ)
+- **Thực thi cục bộ với thông tin đăng nhập AWS của bạn**
 
 ## Yêu cầu trước khi cài đặt
 Để sử dụng AWS MCP, bạn cần đảm bảo môi trường của bạn có:
 - **Node.js**
 - **Ứng dụng Claude Desktop**
-- **Thông tin xác thực AWS được cấu hình cục bộ** (lưu trong thư mục `~/.aws/`)
+- **Thông tin xác thực AWS được cấu hình cục bộ (AWS Configure)** (lưu trong thư mục `~/.aws/`)
 
 ## Hướng dẫn cài đặt AWS MCP
 ### 1. Clone repository
@@ -84,6 +91,9 @@ Sau đó, thêm mục sau vào tệp `claude_desktop_config.json`:
 > Lưu ý: Thay thế `/Users/<YOUR USERNAME>/aws-mcp` bằng đường dẫn thực tế tới thư mục dự án của bạn.
 
 ### 2. Khởi động lại Claude Desktop
+
+Chạy dự án của bạn bằng điều hướng (cd) tới thư mục chứa index.ts và chạy lệnh NPM start 
+
 Sau khi chỉnh sửa cấu hình, hãy khởi động lại ứng dụng Claude Desktop. Nếu quá trình cài đặt đúng, bạn sẽ thấy thông báo kết nối thành công với MCP.
 
 ### 3. Sử dụng AWS MCP trong Claude
@@ -114,17 +124,6 @@ Nếu bạn sử dụng Node.js thông qua `nvm`, hãy biên dịch từ mã ngu
 ```
 > Lưu ý: Thay thế `<USERNAME>` và `<WORKSPACE_PATH>` bằng đường dẫn thực tế trên hệ thống của bạn.
 
-## Kiểm tra và xử lý lỗi
-Để kiểm tra nhật ký lỗi, sử dụng các lệnh sau:
-```bash
-tail -n 50 -f ~/Library/Logs/Claude/mcp-server-aws.log
-# hoặc
-tail -n 50 -f ~/Library/Logs/Claude/mcp.log
-```
-
-## Các tính năng đang phát triển
-- Hỗ trợ MFA
-- Lưu trữ thông tin xác thực SSO để tránh phải làm mới quá thường xuyên
 
 ## Kết luận
 AWS MCP là một công cụ mạnh mẽ cho phép bạn quản lý tài nguyên AWS bằng cách sử dụng trợ lý AI Claude. Với khả năng truy vấn và điều khiển thông qua ngôn ngữ tự nhiên, AWS MCP giúp đơn giản hóa việc quản lý AWS một cách đáng kể. Nếu bạn đang tìm kiếm một giải pháp thay thế cho Amazon Q, AWS MCP là một lựa chọn đáng cân nhắc!
